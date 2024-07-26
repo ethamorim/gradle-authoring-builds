@@ -1,8 +1,8 @@
 plugins {
-    id("java")
+    id("application")
 }
 
-group = "org.example"
+group = "com.ethamorim"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -14,6 +14,16 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
 }
 
-tasks.test {
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+application {
+    mainClass = "com.ethamorim.tutorial.Main"
+}
+
+tasks.named<Test>("test") {
     useJUnitPlatform()
 }
